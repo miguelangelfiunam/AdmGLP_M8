@@ -17,7 +17,7 @@
 			<hr />
 
 			<input type="button"
-				th:attr="value=#{label.usuario.agregar}"
+				th:attr="value=#{label.agregar}"
 				onclick="window.location.href='usuarioForm'; return false;"
 				class="btn btn-primary" /> <br /> <br />
 			<div class="panel panel-info">
@@ -32,34 +32,22 @@
 							<th><span th:text="#{label.usuario.nombre}"></span></th>
 							<th><span th:text="#{label.usuario.apellidos}"></span></th>
 							<th><span th:text="#{label.usuario.edad}"></span></th>
-							<th><span th:text="#{label.usuario.tipo.usuario}"></span></th>
-							<th><span th:text="#{label.usuario.medio.usuario}"></span></th>
-							<th><span th:text="#{label.usuario.accion}"></span></th>
+							<th><span th:text="#{label.usuario.algo}"></span></th>
 						</tr>
 
 						<tr th:each="usuario: ${usuarios}">
 							<td th:text="${usuario.nombre}" />
-							<td th:text="${usuario.apellidos}" />
+							<td th:text="${usuario.apellido1}" />
 							<td th:text="${usuario.edad}" />
-							<td th:text="${usuario.tipoUsuario.nombre}" />
 							<td>
-								<ul>
-									<li th:each="usuarioMedio: ${usuario.usuariosMedios}">
-										<span th:text="${usuarioMedio.medioUsuario.nombre}"></span>
-										&nbsp;
-										<span th:text="${usuarioMedio.valor}"></span>
-									</li>
-								</ul>
-							</td>
-							<td>
-								<a th:href="@{/usuarios/actualizar/{usuarioId}(usuarioId=${usuario.id})}" class="btn btn-primary" role="button">
-									<span th:text="#{label.usuario.editar}"></span>
+								<a th:href="@{/usuarios/actualizar/{usuarioId}(usuarioId=${usuario.idUsuario})}" class="btn btn-primary" role="button">
+									<span th:text="#{label.editar}"></span>
 								</a>
 								&nbsp; 
-								<a th:href="@{/usuarios/eliminar(usuarioId=${usuario.id})}"
+								<a th:href="@{/usuarios/eliminar(usuarioId=${usuario.idUsuario})}"
 									class="btn btn-danger" role="button"
 									th:onclick="'javascript:return eliminarUsuario(\'' + #{label.usuario.eliminar.pregunta} + '\');'">
-									<span th:text="#{label.usuario.eliminar}"></span>
+									<span th:text="#{label.eliminar}"></span>
 								</a>
 							</td>
 						</tr>
