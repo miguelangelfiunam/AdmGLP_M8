@@ -23,7 +23,18 @@ public class PdfView extends AbstractPdfView {
             PdfWriter writer,
             HttpServletRequest request,
             HttpServletResponse response) throws Exception {
+        String ubicacion = request.getParameter("ubicacion");
+        switch (ubicacion) {
+            case "usuarios":
+                document.add(llenaTablaUsuarios(model));
+                break;
+            default:
+                throw new AssertionError();
+        }
 
+    }
+
+    private PdfPTable llenaTablaUsuarios(Map<String, Object> model) {
         List<Usuario> usuarios = (List<Usuario>) model.get("usuarioList");
 
         PdfPTable table = new PdfPTable(4);
@@ -39,7 +50,7 @@ public class PdfView extends AbstractPdfView {
             table.addCell(usuario.getEdad().toString());
             table.addCell(usuario.getCorreo1());
         }
-        document.add(table);
+        return table;
     }
 
 }

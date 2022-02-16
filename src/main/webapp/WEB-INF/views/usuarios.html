@@ -30,7 +30,7 @@
                         <table class="table table-striped table-bordered">
                             <tr>
                                 <th><span th:text="#{label.usuario.nombre}"></span></th>
-                                <th><span th:text="#{label.usuario.apellidos}"></span></th>
+                                <th><span th:text="#{label.usuario.apellido1}"></span></th>
                                 <th><span th:text="#{label.usuario.edad}"></span></th>
                                 <th><span th:text="#{label.usuario.algo}"></span></th>
                             </tr>
@@ -54,7 +54,7 @@
                         </table>
                     </div>
                     <div class="text-center">
-                        <a class="btn btn-info" th:href="@{/formatos/pdf}" role="button"
+                        <a class="btn btn-info" th:href="@{/formatos/pdf(ubicacion=usuarios)}" role="button"
                            target="_blank"><span th:text="#{label.reportes.pdf}"></span>
                         </a> 
                         &nbsp;
