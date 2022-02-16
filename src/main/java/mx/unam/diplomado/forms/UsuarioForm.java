@@ -4,6 +4,7 @@ import java.util.Date;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -38,6 +39,7 @@ public class UsuarioForm {
     private Integer edad;// Edad de la persona
 
     @NotNull
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
     private Date fechaNacimiento; // Fecha de nacimiento
 
     @NotNull
