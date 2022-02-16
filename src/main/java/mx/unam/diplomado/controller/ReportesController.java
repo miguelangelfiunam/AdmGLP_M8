@@ -14,21 +14,21 @@ import mx.unam.diplomado.service.UsuarioService;
 @Controller
 @RequestMapping("/formatos")
 public class ReportesController {
-	
-	@Autowired
-	private UsuarioService usuarioService;
-	
-	@ModelAttribute("usuarioList")
+
+    @Autowired
+    private UsuarioService usuarioService;
+
+    @ModelAttribute("usuarioList")
     public List<Usuario> getProductosList() {
-		return usuarioService.getUsuarios();
+        return usuarioService.getUsuarios();
     }
-	
-	@RequestMapping("/pdf")
+
+    @RequestMapping("/pdf")
     public String generarPdf(Model model) {
         return "pdfView";
     }
-	
-	@RequestMapping("/xls")
+
+    @RequestMapping("/xls")
     public String generarXls(Model model) {
         return "xlsView";
     }

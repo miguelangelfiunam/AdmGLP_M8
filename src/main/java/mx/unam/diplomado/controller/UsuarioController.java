@@ -11,13 +11,13 @@ import mx.unam.diplomado.service.UsuarioService;
 @Controller
 @RequestMapping("/usuarios")
 public class UsuarioController {
-	
-	@Autowired
-	UsuarioService usuarioService;
-	
-	@RequestMapping(value = "/getAll", method = RequestMethod.GET)
-	public String cargaContacto(Model model) {
-		model.addAttribute("usuarios", usuarioService.getUsuarios());
-		return "usuarios";
-	}
+
+    @Autowired
+    UsuarioService usuarioService;
+
+    @RequestMapping(value = "/getAll", method = RequestMethod.GET)
+    public String cargaContacto(Model model) {
+        model.addAttribute("usuarios", usuarioService.getUsuarios());
+        return "usuarios";
+    }
 }

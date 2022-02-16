@@ -16,7 +16,7 @@ import mx.unam.diplomado.modelo.entidades.Usuario;
 
 public class PdfView extends AbstractPdfView {
 
-	@Override
+    @Override
     protected void buildPdfDocument(
             Map<String, Object> model,
             Document document,
@@ -27,19 +27,19 @@ public class PdfView extends AbstractPdfView {
         List<Usuario> usuarios = (List<Usuario>) model.get("usuarioList");
 
         PdfPTable table = new PdfPTable(4);
-        
+
         table.addCell("Nombre");
         table.addCell("Apellidos");
         table.addCell("Edad");
         table.addCell("Correo");
 
-        for(Usuario usuario : usuarios ) {
-        	table.addCell(usuario.getNombre());
+        for (Usuario usuario : usuarios) {
+            table.addCell(usuario.getNombre());
             table.addCell(usuario.getApellido1());
             table.addCell(usuario.getEdad().toString());
             table.addCell(usuario.getCorreo1());
         }
         document.add(table);
     }
-	
+
 }

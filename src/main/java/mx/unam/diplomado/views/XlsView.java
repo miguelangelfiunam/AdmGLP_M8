@@ -14,8 +14,8 @@ import org.springframework.web.servlet.view.document.AbstractXlsView;
 import mx.unam.diplomado.modelo.entidades.Usuario;
 
 public class XlsView extends AbstractXlsView {
-	
-	@Override
+
+    @Override
     protected void buildExcelDocument(
             Map<String, Object> model,
             Workbook workbook,
