@@ -1,9 +1,11 @@
 package mx.unam.diplomado.forms;
 
 import java.util.Date;
+import javax.persistence.Temporal;
+import static javax.persistence.TemporalType.DATE;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.Email;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -18,9 +20,10 @@ public class UsuarioForm {
     private String apodo; // Seudonimo del usuario en la aplicacion
 
     @NotNull
+    @Email
     private String correo1; // Correo electronico
-
-    @NotBlank
+    
+    @Email
     private String correo2; // Correo electronico
 
     @Size(max = 50)
@@ -39,14 +42,13 @@ public class UsuarioForm {
     private Integer edad;// Edad de la persona
 
     @NotNull
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechaNacimiento; // Fecha de nacimiento
 
     @NotNull
     @Size(max = 10)
     private String telefono1; // Telefono del usuario
 
-    @NotNull
     @Size(max = 10)
     private String telefono2; // Segundo telefono de contacto
 

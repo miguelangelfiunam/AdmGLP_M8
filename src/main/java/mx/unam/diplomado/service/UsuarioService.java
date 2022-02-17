@@ -8,7 +8,7 @@ public interface UsuarioService {
 
     List<Usuario> getUsuarios();
 
-    void guardaContacto(Usuario usuario);
+    void guardaUsuario(Usuario usuario);
 
     Usuario getUsuario(Integer id);
 

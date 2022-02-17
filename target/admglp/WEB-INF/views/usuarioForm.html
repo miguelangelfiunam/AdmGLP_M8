@@ -21,10 +21,10 @@
                     </div>
                     <div class="panel-body">
 
-                        <form th:action="@{/usuarios/guardaUsuario}" class="form-horizontal"
+                        <form th:action="@{/usuarios/guardarUsuario}" class="form-horizontal"
                               method="post" th:object="${usuario}">
 
-                            <input type="hidden" id="id" name="id" th:field="*{idUsuario}"/>
+                            <input type="hidden" id="idUsuario" name="idUsuario" th:field="*{idUsuario}"/>
                             <div class="form-group">
                                 <label th:text="#{label.usuario.apodo}" class="col-md-3 control-label"></label>
                                 <div class="col-md-9">
@@ -114,7 +114,7 @@
                                 <label th:text="#{label.usuario.fechaNacimiento}" class="col-md-3 control-label">
                                 </label>
                                 <div class="col-md-3">
-                                    <input type="text" th:field="*{fechaNacimiento}" class="form-control" />
+                                    <input type="date" th:field="*{fechaNacimiento}" class="form-control" />
                                 </div>
                                 <div class="col-md-3">
                                     <span th:if="${#fields.hasErrors('fechaNacimiento')}">
