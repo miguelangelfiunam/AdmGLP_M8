@@ -51,6 +51,11 @@ public class UsuarioForm {
 
     @Size(max = 10)
     private String telefono2; // Segundo telefono de contacto
+    
+    @NotNull
+    private Integer idRol;
+    
+    private String contra;
 
     public Integer getIdUsuario() {
         return idUsuario;
@@ -112,6 +117,14 @@ public class UsuarioForm {
         return edad;
     }
 
+    public Integer getIdRol() {
+        return idRol;
+    }
+
+    public String getContra() {
+        return contra;
+    }
+
     public void setEdad(Integer edad) {
         this.edad = edad;
     }
@@ -138,6 +151,14 @@ public class UsuarioForm {
 
     public void setTelefono2(String telefono2) {
         this.telefono2 = telefono2;
+    }
+
+    public void setIdRol(Integer idRol) {
+        this.idRol = idRol;
+    }
+
+    public void setContra(String contra) {
+        this.contra = contra;
     }
 
     @Override

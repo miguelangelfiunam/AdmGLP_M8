@@ -15,7 +15,10 @@
                     <span th:text="#{label.titulo.aplicacion}"></span>
                 </h3>
                 <hr/>
-
+                <input type="button"
+                       th:attr="value=#{label.titulo.home}"
+                       onclick="window.location.href = '/admglp'; return false;"
+                       class="btn btn-primary" />
                 <input type="button"
                        th:attr="value=#{label.agregar}"
                        onclick="window.location.href = 'usuarioForm'; return false;"
@@ -27,8 +30,8 @@
                         </div>
                     </div>
                     <div class="panel-body">
-                        <form th:action="@{/usuarios/buscarUsuariosPorEstatus}" method="post" class="row" id="formBuscaPorEstatus">
-                            <div class="mb-3">
+                        <form th:action="@{/usuarios/buscarUsuariosPorEstatus}" method="post" class="row g-3" id="formBuscaPorEstatus">
+                            <div class="col-auto">
                                 <select th:name="estatusSelect" class="form-control" id="selectEstatus">
                                     <option value="">--SELECT--</option>
                                     <option th:each="estatus: ${#servletContext.getAttribute('estatusUsuarios')}"

@@ -7,7 +7,12 @@ import java.util.List;
 import java.util.Set;
 import javax.validation.Valid;
 import mx.unam.diplomado.forms.UsuarioForm;
+import mx.unam.diplomado.modelo.entidades.Contra;
+import mx.unam.diplomado.modelo.entidades.Rol;
 import mx.unam.diplomado.modelo.entidades.Usuario;
+import mx.unam.diplomado.modelo.entidades.UsuarioRol;
+import mx.unam.diplomado.service.ContraService;
+import mx.unam.diplomado.service.RolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import mx.unam.diplomado.service.UsuarioService;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,14 +36,20 @@ public class UsuarioController {
     @Autowired
     UsuarioService usuarioService;
 
+    @Autowired
+    RolService rolService;
+
+    @Autowired
+    ContraService contraService;
+
     @ResponseBody
     @RequestMapping(value = {"/jsonUsuario"})
     public List<Usuario> tipoUsuarioJson() {
         return usuarioService.getUsuarios();
     }
-    
+
     @PostMapping("/buscarUsuariosPorEstatus")
-    public String cargaUsuariosPorEstatus(Model model, @RequestParam(name = "estatusSelect") Integer estatus ) {
+    public String cargaUsuariosPorEstatus(Model model, @RequestParam(name = "estatusSelect") Integer estatus) {
         model.addAttribute("usuarios", usuarioService.getUsuariosPorEstatus(estatus));
 //        model.addAttribute("estatusSelect", estatus);
         return "usuarios";
@@ -56,6 +68,7 @@ public class UsuarioController {
     }
 
     @RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST)
+    @Transactional
     public ModelAndView guardaUsuario(@ModelAttribute("usuario") @Valid UsuarioForm usuarioForm, BindingResult result) {
         ModelAndView vista = new ModelAndView();
         if (result.hasErrors()) {
@@ -71,6 +84,11 @@ public class UsuarioController {
                 usuario = new Usuario();
                 usuario.setFecRegistro(new Date());
                 usuario.setEstatus(10);
+
+                Contra contra = new Contra(usuarioForm.getContra(), new Date(), null, 10);
+                contraService.guardaContra(contra);
+                usuario.setContra(contra);
+
             }
 
             usuario.setApodo(usuarioForm.getApodo());
@@ -83,7 +101,17 @@ public class UsuarioController {
             usuario.setFechaNacimiento(usuarioForm.getFechaNacimiento());
             usuario.setTelefono1(usuarioForm.getTelefono1());
             usuario.setTelefono2(usuarioForm.getTelefono2());
-            usuario.setFecRegistro(new Date());
+            usuarioService.guardaUsuario(usuario);
+            
+            Set<UsuarioRol> usuariosRoles = new HashSet<UsuarioRol>();
+            Rol rol = rolService.getRol(usuarioForm.getIdRol());
+            UsuarioRol usuarioRol = new UsuarioRol();
+            usuarioRol.setUsuario(usuario);
+            usuarioRol.setRol(rol);
+            usuarioRol.setFecRegistro(new Date());
+            usuarioRol.setEstatus(10);
+            usuariosRoles.add(usuarioRol);
+            usuario.setUsuariosRoles(usuariosRoles);
             usuarioService.guardaUsuario(usuario);
 
             vista.addObject("usuarios", usuarioService.getUsuarios());
@@ -108,6 +136,16 @@ public class UsuarioController {
             usuarioForm.setFechaNacimiento(usuario.getFechaNacimiento());
             usuarioForm.setTelefono1(usuario.getTelefono1());
             usuarioForm.setTelefono2(usuario.getTelefono2());
+            usuarioForm.setContra(usuario.getContra().getContraCifrado());
+
+            Set<UsuarioRol> usuariosRoles = usuario.getUsuariosRoles();
+            if (usuariosRoles != null && !usuariosRoles.isEmpty()) {
+                for (Iterator<UsuarioRol> it = usuariosRoles.iterator(); it.hasNext();) {
+                    UsuarioRol usuarioRol = it.next();
+                    usuarioForm.setIdRol(usuarioRol.getRol().getIdRol());
+                }
+            }
+
             model.addAttribute("usuario", usuarioForm);
         } else {
             model.addAttribute("usuario", new UsuarioForm());

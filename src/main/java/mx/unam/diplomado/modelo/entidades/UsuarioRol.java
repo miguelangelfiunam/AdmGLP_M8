@@ -33,6 +33,17 @@ public class UsuarioRol {
     private Date fecActualizacion; // Fecha de actualizacion
     private Integer estatus;
 
+    public UsuarioRol() {
+    }
+
+    public UsuarioRol(Rol rol, Usuario usuario, Date fecRegistro, Date fecActualizacion, Integer estatus) {
+        this.rol = rol;
+        this.usuario = usuario;
+        this.fecRegistro = fecRegistro;
+        this.fecActualizacion = fecActualizacion;
+        this.estatus = estatus;
+    }
+
     @Id
     @Column(name = "id_usuario_rol")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
