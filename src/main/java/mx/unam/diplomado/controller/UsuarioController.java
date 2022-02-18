@@ -18,6 +18,7 @@ import mx.unam.diplomado.service.UsuarioService;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -33,6 +34,13 @@ public class UsuarioController {
     @RequestMapping(value = {"/jsonUsuario"})
     public List<Usuario> tipoUsuarioJson() {
         return usuarioService.getUsuarios();
+    }
+    
+    @PostMapping("/buscarUsuariosPorEstatus")
+    public String cargaUsuariosPorEstatus(Model model, @RequestParam(name = "estatusSelect") Integer estatus ) {
+        model.addAttribute("usuarios", usuarioService.getUsuariosPorEstatus(estatus));
+//        model.addAttribute("estatusSelect", estatus);
+        return "usuarios";
     }
 
     @RequestMapping(value = "/getAll", method = RequestMethod.GET)

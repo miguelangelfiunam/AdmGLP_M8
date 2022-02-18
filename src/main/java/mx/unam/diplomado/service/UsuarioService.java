@@ -13,4 +13,6 @@ public interface UsuarioService {
     Usuario getUsuario(Integer id);
 
     void eliminaUsuario(Integer id);
+    
+    List<Usuario> getUsuariosPorEstatus(Integer estatus);
 }

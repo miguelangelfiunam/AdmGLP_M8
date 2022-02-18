@@ -38,4 +38,9 @@ public class UsuarioServiceImpl implements UsuarioService {
         usuarioRepository.deleteById(id);
     }
 
+    @Override
+    public List<Usuario> getUsuariosPorEstatus(Integer estatus) {
+        return usuarioRepository.findByEstatus(estatus);
+    }
+
 }
