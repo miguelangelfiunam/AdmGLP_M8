@@ -24,8 +24,8 @@ public class Articulo {
     private Integer id;
     private String nombre;
     private Double precio;
-    private Date fecRegistro;
-    private Date fecActualizacion;
+    private Date fecreg;
+    private Date fecact;
     private Integer estatus;
 
     @Id
@@ -49,13 +49,13 @@ public class Articulo {
 
     @Column(name = "articulo_dt_fecha_registro", columnDefinition = "DATETIME")
     @NotNull
-    public Date getFecRegistro() {
-        return fecRegistro;
+    public Date getFecreg() {
+        return fecreg;
     }
 
     @Column(name = "articulo_dt_fecha_actualizacion", columnDefinition = "DATETIME")
-    public Date getFecActualizacion() {
-        return fecActualizacion;
+    public Date getFecact() {
+        return fecact;
     }
 
     @Column(name = "articulo_si_estatus")
@@ -76,12 +76,12 @@ public class Articulo {
         this.precio = precio;
     }
 
-    public void setFecRegistro(Date fecRegistro) {
-        this.fecRegistro = fecRegistro;
+    public void setFecreg(Date fecreg) {
+        this.fecreg = fecreg;
     }
 
-    public void setFecActualizacion(Date fecActualizacion) {
-        this.fecActualizacion = fecActualizacion;
+    public void setFecact(Date fecact) {
+        this.fecact = fecact;
     }
 
     public void setEstatus(Integer estatus) {
@@ -90,6 +90,6 @@ public class Articulo {
 
     @Override
     public String toString() {
-        return "Articulo{" + "id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", fecRegistro=" + fecRegistro + ", fecActualizacion=" + fecActualizacion + ", estatus=" + estatus + '}';
+        return "Articulo{" + "id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", fecreg=" + fecreg + ", fecact=" + fecact + ", estatus=" + estatus + '}';
     }
 }

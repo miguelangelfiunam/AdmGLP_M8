@@ -20,33 +20,34 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "t_comentario")
 public class Comentario {
+
     private Integer id;
-    private Integer numComenatario;
+    private Integer numcomenatario;
     private String comentario;
     private String tipo;
-    private Date fecRegistro;
-    private Date fecActualizacion;
+    private Date fecreg;
+    private Date fecact;
     private Integer estatus;
-    
+
     @Id
     @Column(name = "id_comentario")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
-    
+
     @Column(name = "comentario_i_numero")
     @NotNull
-    public Integer getNumComenatario() {
-        return numComenatario;
+    public Integer getNumcomenatario() {
+        return numcomenatario;
     }
-    
+
     @Column(name = "comentario_vc_comentario", length = 500)
     @NotNull
     public String getComentario() {
         return comentario;
     }
-    
+
     @Column(name = "comentario_c_tipo", length = 1)
     @NotNull
     public String getTipo() {
@@ -55,15 +56,15 @@ public class Comentario {
 
     @Column(name = "comentario_dt_fecha_registro", columnDefinition = "DATETIME")
     @NotNull
-    public Date getFecRegistro() {
-        return fecRegistro;
+    public Date getFecreg() {
+        return fecreg;
     }
-    
+
     @Column(name = "comentario_dt_fecha_actualizacion", columnDefinition = "DATETIME")
-    public Date getFecActualizacion() {
-        return fecActualizacion;
+    public Date getFecact() {
+        return fecact;
     }
-    
+
     @Column(name = "comentario_si_estatus")
     @NotNull
     public Integer getEstatus() {
@@ -74,10 +75,9 @@ public class Comentario {
         this.id = id;
     }
 
-    public void setNumComenatario(Integer numComenatario) {
-        this.numComenatario = numComenatario;
+    public void setNumcomenatario(Integer numcomenatario) {
+        this.numcomenatario = numcomenatario;
     }
-
     public void setComentario(String comentario) {
         this.comentario = comentario;
     }
@@ -86,12 +86,12 @@ public class Comentario {
         this.tipo = tipo;
     }
 
-    public void setFecRegistro(Date fecRegistro) {
-        this.fecRegistro = fecRegistro;
+    public void setFecreg(Date fecreg) {
+        this.fecreg = fecreg;
     }
 
-    public void setFecActualizacion(Date fecActualizacion) {
-        this.fecActualizacion = fecActualizacion;
+    public void setFecact(Date fecact) {
+        this.fecact = fecact;
     }
 
     public void setEstatus(Integer estatus) {
@@ -100,6 +100,6 @@ public class Comentario {
 
     @Override
     public String toString() {
-        return "Comentario{" + "id=" + id + ", numComenatario=" + numComenatario + ", comentario=" + comentario + ", tipo=" + tipo + ", fecRegistro=" + fecRegistro + ", fecActualizacion=" + fecActualizacion + ", estatus=" + estatus + '}';
+        return "Comentario{" + "id=" + id + ", numcomenatario=" + numcomenatario + ", comentario=" + comentario + ", tipo=" + tipo + ", fecreg=" + fecreg + ", fecact=" + fecact + ", estatus=" + estatus + '}';
     }
 }

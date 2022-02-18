@@ -28,12 +28,12 @@ public class Pedido {
 
     private Integer id;
     private Double total;
-    private Date fecPedido;
-    private Date fecEntrega;
+    private Date fecpedido;
+    private Date fecentrega;
     private Integer pago;
     private String observacion;
-    private Date fecRegistro;
-    private Date fecActualizacion;
+    private Date fecreg;
+    private Date fecact;
     private Integer estatus;
 
     @Id
@@ -51,21 +51,21 @@ public class Pedido {
 
     @Column(name = "pedido_dt_fecha_pedido", columnDefinition = "DATETIME")
     @NotNull
-    public Date getFecPedido() {
-        return fecPedido;
+    public Date getFecpedido() {
+        return fecpedido;
     }
 
     @Column(name = "pedido_dt_fecha_entrega", columnDefinition = "DATETIME")
-    public Date getFecEntrega() {
-        return fecEntrega;
+    public Date getFecentrega() {
+        return fecentrega;
     }
-    
+
     @Column(name = "pedido_i_tipo_pago")
     @NotNull
     public Integer getPago() {
         return pago;
     }
-    
+
     @Column(name = "pedido_vc_observacion", length = 250)
     @NotNull
     public String getObservacion() {
@@ -74,13 +74,13 @@ public class Pedido {
 
     @Column(name = "pedido_dt_fecha_registro", columnDefinition = "DATETIME")
     @NotNull
-    public Date getFecRegistro() {
-        return fecRegistro;
+    public Date getFecreg() {
+        return fecreg;
     }
 
     @Column(name = "pedido_dt_fecha_actualizacion", columnDefinition = "DATETIME")
-    public Date getFecActualizacion() {
-        return fecActualizacion;
+    public Date getFecact() {
+        return fecact;
     }
 
     @Column(name = "pedido_si_estatus")
@@ -97,12 +97,12 @@ public class Pedido {
         this.total = total;
     }
 
-    public void setFecPedido(Date fecPedido) {
-        this.fecPedido = fecPedido;
+    public void setFecpedido(Date fecpedido) {
+        this.fecpedido = fecpedido;
     }
 
-    public void setFecEntrega(Date fecEntrega) {
-        this.fecEntrega = fecEntrega;
+    public void setFecentrega(Date fecentrega) {
+        this.fecentrega = fecentrega;
     }
 
     public void setPago(Integer pago) {
@@ -113,12 +113,12 @@ public class Pedido {
         this.observacion = observacion;
     }
 
-    public void setFecRegistro(Date fecRegistro) {
-        this.fecRegistro = fecRegistro;
+    public void setFecreg(Date fecreg) {
+        this.fecreg = fecreg;
     }
 
-    public void setFecActualizacion(Date fecActualizacion) {
-        this.fecActualizacion = fecActualizacion;
+    public void setFecact(Date fecact) {
+        this.fecact = fecact;
     }
 
     public void setEstatus(Integer estatus) {
@@ -127,6 +127,6 @@ public class Pedido {
 
     @Override
     public String toString() {
-        return "Pedido{" + "id=" + id + ", total=" + total + ", fecPedido=" + fecPedido + ", fecEntrega=" + fecEntrega + ", pago=" + pago + ", observacion=" + observacion + ", fecRegistro=" + fecRegistro + ", fecActualizacion=" + fecActualizacion + ", estatus=" + estatus + '}';
+        return "Pedido{" + "id=" + id + ", total=" + total + ", fecpedido=" + fecpedido + ", fecentrega=" + fecentrega + ", pago=" + pago + ", observacion=" + observacion + ", fecreg=" + fecreg + ", fecact=" + fecact + ", estatus=" + estatus + '}';
     }
 }

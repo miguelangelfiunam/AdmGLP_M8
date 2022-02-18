@@ -22,12 +22,12 @@ import javax.validation.constraints.NotNull;
 public class Transporte {
 
     private Integer id;
-    private Integer numUnidad;
+    private Integer numunidad;
     private Integer modelo;
     private String placas;
     private String marca;
-    private Date fecRegistro;
-    private Date fecActualizacion;
+    private Date fecreg;
+    private Date fecact;
     private Integer estatus;
 
     @Id
@@ -39,8 +39,8 @@ public class Transporte {
 
     @Column(name = "trans_i_numero_unidad")
     @NotNull
-    public Integer getNumUnidad() {
-        return numUnidad;
+    public Integer getNumunidad() {
+        return numunidad;
     }
 
     @Column(name = "trans_i_modelo")
@@ -63,13 +63,13 @@ public class Transporte {
 
     @Column(name = "trans_dt_fecha_registro", columnDefinition = "DATETIME")
     @NotNull
-    public Date getFecRegistro() {
-        return fecRegistro;
+    public Date getFecreg() {
+        return fecreg;
     }
 
     @Column(name = "trans_dt_fecha_actualizacion", columnDefinition = "DATETIME")
-    public Date getFecActualizacion() {
-        return fecActualizacion;
+    public Date getFecact() {
+        return fecact;
     }
 
     @Column(name = "trans_si_estatus")
@@ -82,8 +82,8 @@ public class Transporte {
         this.id = id;
     }
 
-    public void setNumUnidad(Integer numUnidad) {
-        this.numUnidad = numUnidad;
+    public void setNumunidad(Integer numunidad) {
+        this.numunidad = numunidad;
     }
 
     public void setModelo(Integer modelo) {
@@ -98,12 +98,12 @@ public class Transporte {
         this.marca = marca;
     }
 
-    public void setFecRegistro(Date fecRegistro) {
-        this.fecRegistro = fecRegistro;
+    public void setFecreg(Date fecreg) {
+        this.fecreg = fecreg;
     }
 
-    public void setFecActualizacion(Date fecActualizacion) {
-        this.fecActualizacion = fecActualizacion;
+    public void setFecact(Date fecact) {
+        this.fecact = fecact;
     }
 
     public void setEstatus(Integer estatus) {
@@ -112,6 +112,6 @@ public class Transporte {
 
     @Override
     public String toString() {
-        return "Transporte{" + "id=" + id + ", numUnidad=" + numUnidad + ", modelo=" + modelo + ", placas=" + placas + ", marca=" + marca + ", fecRegistro=" + fecRegistro + ", fecActualizacion=" + fecActualizacion + ", estatus=" + estatus + '}';
+        return "Transporte{" + "id=" + id + ", numunidad=" + numunidad + ", modelo=" + modelo + ", placas=" + placas + ", marca=" + marca + ", fecreg=" + fecreg + ", fecact=" + fecact + ", estatus=" + estatus + '}';
     }
 }

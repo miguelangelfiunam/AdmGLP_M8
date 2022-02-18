@@ -22,10 +22,10 @@ import javax.validation.constraints.NotNull;
 public class Turno {
 
     private Integer id;
-    private Date fecInicio;
-    private Date fecFin;
-    private Date fecRegistro;
-    private Date fecActualizacion;
+    private Date fecinicio;
+    private Date fecfin;
+    private Date fecreg;
+    private Date fecact;
     private Integer estatus;
 
     @Id
@@ -37,24 +37,24 @@ public class Turno {
 
     @Column(name = "turno_dt_fecha_inicio_turno", columnDefinition = "DATETIME")
     @NotNull
-    public Date getFecInicio() {
-        return fecInicio;
+    public Date getFecinicio() {
+        return fecinicio;
     }
 
     @Column(name = "turno_dt_fecha_fin_turno", columnDefinition = "DATETIME")
-    public Date getFecFin() {
-        return fecFin;
+    public Date getFecfin() {
+        return fecfin;
     }
 
     @Column(name = "turno_dt_fecha_registro", columnDefinition = "DATETIME")
     @NotNull
-    public Date getFecRegistro() {
-        return fecRegistro;
+    public Date getFecreg() {
+        return fecreg;
     }
 
     @Column(name = "turno_dt_fecha_actualizacion", columnDefinition = "DATETIME")
-    public Date getFecActualizacion() {
-        return fecActualizacion;
+    public Date getFecact() {
+        return fecact;
     }
 
     @Column(name = "turno_si_estatus")
@@ -67,20 +67,20 @@ public class Turno {
         this.id = id;
     }
 
-    public void setFecInicio(Date fecInicio) {
-        this.fecInicio = fecInicio;
+    public void setFecinicio(Date fecinicio) {
+        this.fecinicio = fecinicio;
     }
 
-    public void setFecFin(Date fecFin) {
-        this.fecFin = fecFin;
+    public void setFecfin(Date fecfin) {
+        this.fecfin = fecfin;
     }
 
-    public void setFecRegistro(Date fecRegistro) {
-        this.fecRegistro = fecRegistro;
+    public void setFecreg(Date fecreg) {
+        this.fecreg = fecreg;
     }
 
-    public void setFecActualizacion(Date fecActualizacion) {
-        this.fecActualizacion = fecActualizacion;
+    public void setFecact(Date fecact) {
+        this.fecact = fecact;
     }
 
     public void setEstatus(Integer estatus) {
@@ -89,6 +89,6 @@ public class Turno {
 
     @Override
     public String toString() {
-        return "Turno{" + "id=" + id + ", fecInicio=" + fecInicio + ", fecFin=" + fecFin + ", fecRegistro=" + fecRegistro + ", fecActualizacion=" + fecActualizacion + ", estatus=" + estatus + '}';
+        return "Turno{" + "id=" + id + ", fecinicio=" + fecinicio + ", fecfin=" + fecfin + ", fecreg=" + fecreg + ", fecact=" + fecact + ", estatus=" + estatus + '}';
     }
 }

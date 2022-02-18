@@ -10,9 +10,10 @@ import mx.unam.diplomado.forms.UsuarioForm;
 import mx.unam.diplomado.modelo.entidades.Contra;
 import mx.unam.diplomado.modelo.entidades.Rol;
 import mx.unam.diplomado.modelo.entidades.Usuario;
-import mx.unam.diplomado.modelo.entidades.UsuarioRol;
+import mx.unam.diplomado.modelo.entidades.Usuario_rol;
 import mx.unam.diplomado.service.ContraService;
 import mx.unam.diplomado.service.RolService;
+import mx.unam.diplomado.service.UsuarioRolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,6 +42,9 @@ public class UsuarioController {
 
     @Autowired
     ContraService contraService;
+
+    @Autowired
+    UsuarioRolService usuarioRolService;
 
     @ResponseBody
     @RequestMapping(value = {"/jsonUsuario"})
@@ -77,12 +81,12 @@ public class UsuarioController {
         } else {
             System.out.println("OBJECT FORM==" + usuarioForm);
             Usuario usuario = null;
-            if (usuarioForm.getIdUsuario() != null) {
-                usuario = usuarioService.getUsuario(usuarioForm.getIdUsuario());
-                usuario.setFecActualizacion(new Date());
+            if (usuarioForm.getIdusuario()!= null) {
+                usuario = usuarioService.getUsuario(usuarioForm.getIdusuario());
+                usuario.setFecact(new Date());
             } else {
                 usuario = new Usuario();
-                usuario.setFecRegistro(new Date());
+                usuario.setFecreg(new Date());
                 usuario.setEstatus(10);
 
                 Contra contra = new Contra(usuarioForm.getContra(), new Date(), null, 10);
@@ -98,21 +102,23 @@ public class UsuarioController {
             usuario.setApellido1(usuarioForm.getApellido1());
             usuario.setApellido2(usuarioForm.getApellido2());
             usuario.setEdad(usuarioForm.getEdad());
-            usuario.setFechaNacimiento(usuarioForm.getFechaNacimiento());
+            usuario.setFnac(usuarioForm.getFnac());
             usuario.setTelefono1(usuarioForm.getTelefono1());
             usuario.setTelefono2(usuarioForm.getTelefono2());
             usuarioService.guardaUsuario(usuario);
-            
-            Set<UsuarioRol> usuariosRoles = new HashSet<UsuarioRol>();
-            Rol rol = rolService.getRol(usuarioForm.getIdRol());
-            UsuarioRol usuarioRol = new UsuarioRol();
+
+            Set<Usuario_rol> usuariosRoles = new HashSet<Usuario_rol>();
+            Rol rol = rolService.getRol(usuarioForm.getIdrol());
+            Usuario_rol usuarioRol = new Usuario_rol();
             usuarioRol.setUsuario(usuario);
             usuarioRol.setRol(rol);
-            usuarioRol.setFecRegistro(new Date());
+            usuarioRol.setFecreg(new Date());
             usuarioRol.setEstatus(10);
             usuariosRoles.add(usuarioRol);
-            usuario.setUsuariosRoles(usuariosRoles);
-            usuarioService.guardaUsuario(usuario);
+            usuario.setUsuariosroles(usuariosRoles);
+            if (!usuarioRolService.existeRelacionUsuarioRol(usuario.getIdusuario(), rol.getIdrol())) {
+                usuarioService.guardaUsuario(usuario);
+            }
 
             vista.addObject("usuarios", usuarioService.getUsuarios());
             vista.setViewName("usuarios");
@@ -125,7 +131,7 @@ public class UsuarioController {
         Usuario usuario = usuarioService.getUsuario(usuarioId);
         if (usuario != null) {
             UsuarioForm usuarioForm = new UsuarioForm();
-            usuarioForm.setIdUsuario(usuarioId);
+            usuarioForm.setIdusuario(usuarioId);
             usuarioForm.setApodo(usuario.getApodo());
             usuarioForm.setCorreo1(usuario.getCorreo1());
             usuarioForm.setCorreo2(usuario.getCorreo2());
@@ -133,16 +139,16 @@ public class UsuarioController {
             usuarioForm.setApellido1(usuario.getApellido1());
             usuarioForm.setApellido2(usuario.getApellido2());
             usuarioForm.setEdad(usuario.getEdad());
-            usuarioForm.setFechaNacimiento(usuario.getFechaNacimiento());
+            usuarioForm.setFnac(usuario.getFnac());
             usuarioForm.setTelefono1(usuario.getTelefono1());
             usuarioForm.setTelefono2(usuario.getTelefono2());
-            usuarioForm.setContra(usuario.getContra().getContraCifrado());
+            usuarioForm.setContra(usuario.getContra().getContra());
 
-            Set<UsuarioRol> usuariosRoles = usuario.getUsuariosRoles();
+            Set<Usuario_rol> usuariosRoles = usuario.getUsuariosroles();
             if (usuariosRoles != null && !usuariosRoles.isEmpty()) {
-                for (Iterator<UsuarioRol> it = usuariosRoles.iterator(); it.hasNext();) {
-                    UsuarioRol usuarioRol = it.next();
-                    usuarioForm.setIdRol(usuarioRol.getRol().getIdRol());
+                for (Iterator<Usuario_rol> it = usuariosRoles.iterator(); it.hasNext();) {
+                    Usuario_rol usuarioRol = it.next();
+                    usuarioForm.setIdrol(usuarioRol.getRol().getIdrol());
                 }
             }
 

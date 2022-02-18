@@ -22,12 +22,12 @@ import javax.validation.constraints.NotNull;
 public class Estatus {
 
     private Integer id;
-    private Integer numeroEstatus;
+    private Integer numeroestatus;
     private String tabla;
-    private String nombreEstatus;
+    private String nombreestatus;
     private String descripcion;
-    private Date fecRegistro; // Fecha de Inicio de acceso a la aplicacion
-    private Date fecActualizacion; // Fecha de fin de acceso a la aplicacion
+    private Date fecreg; // Fecha de Inicio de acceso a la aplicacion
+    private Date fecact; // Fecha de fin de acceso a la aplicacion
     private String activo; // Estado del usuario
 
     @Id
@@ -39,8 +39,8 @@ public class Estatus {
 
     @Column(name = "estatus_si_num_estatus")
     @NotNull
-    public Integer getNumeroEstatus() {
-        return numeroEstatus;
+    public Integer getNumeroestatus() {
+        return numeroestatus;
     }
 
     @Column(name = "estatus_vc_nom_tabla", length = 50)
@@ -51,8 +51,8 @@ public class Estatus {
 
     @Column(name = "estatus_vc_nombre_estatus", length = 50)
     @NotNull
-    public String getNombreEstatus() {
-        return nombreEstatus;
+    public String getNombreestatus() {
+        return nombreestatus;
     }
 
     @Column(name = "estatus_vc_descripcion", length = 200)
@@ -63,15 +63,15 @@ public class Estatus {
 
     @Column(name = "estatus_dt_fecha_registro", columnDefinition = "DATETIME")
     @NotNull
-    public Date getFecRegistro() {
-        return fecRegistro;
+    public Date getFecreg() {
+        return fecreg;
     }
 
     @Column(name = "estatus_dt_fecha_actualizacion", columnDefinition = "DATETIME")
-    public Date getFecActualizacion() {
-        return fecActualizacion;
+    public Date getFecact() {
+        return fecact;
     }
-    
+
     @Column(name = "estatus_c_activo", length = 1)
     @NotNull
     public String getActivo() {
@@ -82,12 +82,12 @@ public class Estatus {
         this.id = id;
     }
 
-    public void setNumeroEstatus(Integer numeroEstatus) {
-        this.numeroEstatus = numeroEstatus;
+    public void setNumeroestatus(Integer numeroestatus) {
+        this.numeroestatus = numeroestatus;
     }
 
-    public void setNombreEstatus(String nombreEstatus) {
-        this.nombreEstatus = nombreEstatus;
+    public void setNombreestatus(String nombreestatus) {
+        this.nombreestatus = nombreestatus;
     }
 
     public void setTabla(String tabla) {
@@ -98,12 +98,12 @@ public class Estatus {
         this.descripcion = descripcion;
     }
 
-    public void setFecRegistro(Date fecRegistro) {
-        this.fecRegistro = fecRegistro;
+    public void setFecreg(Date fecreg) {
+        this.fecreg = fecreg;
     }
 
-    public void setFecActualizacion(Date fecActualizacion) {
-        this.fecActualizacion = fecActualizacion;
+    public void setFecact(Date fecact) {
+        this.fecact = fecact;
     }
 
     public void setActivo(String activo) {
@@ -112,6 +112,6 @@ public class Estatus {
 
     @Override
     public String toString() {
-        return "Estatus{" + "id=" + id + ", numeroEstatus=" + numeroEstatus + ", tabla=" + tabla + ", nombreEstatus=" + nombreEstatus + ", descripcion=" + descripcion + ", fecRegistro=" + fecRegistro + ", fecActualizacion=" + fecActualizacion + ", activo=" + activo + '}';
+        return "Estatus{" + "id=" + id + ", numeroestatus=" + numeroestatus + ", tabla=" + tabla + ", nombreestatus=" + nombreestatus + ", descripcion=" + descripcion + ", fecreg=" + fecreg + ", fecact=" + fecact + ", activo=" + activo + '}';
     }
 }

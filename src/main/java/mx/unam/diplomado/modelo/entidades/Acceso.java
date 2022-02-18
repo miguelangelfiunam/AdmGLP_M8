@@ -22,47 +22,47 @@ import javax.validation.constraints.NotNull;
 public class Acceso {
 
     private Integer id;
-    private Date fecInicio;
-    private Date fecFin;
+    private Date fecinicio;
+    private Date fecfin;
     private String descripcion;
-    private Date fecRegistro;
-    private Date fecActualizacion;
+    private Date fecreg;
+    private Date fecact;
     private Integer estatus;
-    
+
     @Id
     @Column(name = "id_acceso")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
-    
+
     @Column(name = "acceso_dt_fecha_Inicio_acceso", columnDefinition = "DATE")
-    public Date getFecInicio() {
-        return fecInicio;
+    public Date getFecinicio() {
+        return fecinicio;
     }
-    
+
     @Column(name = "acceso_dt_fecha_fin_acceso", columnDefinition = "DATE")
-    public Date getFecFin() {
-        return fecFin;
+    public Date getFecfin() {
+        return fecfin;
     }
-    
+
     @Column(name = "acceso_descripcion", length = 150)
     @NotNull
     public String getDescripcion() {
         return descripcion;
     }
-    
+
     @Column(name = "acceso_dt_fecha_registro", columnDefinition = "DATETIME")
     @NotNull
-    public Date getFecRegistro() {
-        return fecRegistro;
+    public Date getFecreg() {
+        return fecreg;
     }
-    
+
     @Column(name = "acceso_dt_fecha_actualizacion", columnDefinition = "DATETIME")
-    public Date getFecActualizacion() {
-        return fecActualizacion;
+    public Date getFecact() {
+        return fecact;
     }
-    
+
     @Column(name = "acceso_si_estatus")
     @NotNull
     public Integer getEstatus() {
@@ -73,24 +73,24 @@ public class Acceso {
         this.id = id;
     }
 
-    public void setFecInicio(Date fecInicio) {
-        this.fecInicio = fecInicio;
+    public void setFecinicio(Date fecinicio) {
+        this.fecinicio = fecinicio;
     }
 
-    public void setFecFin(Date fecFin) {
-        this.fecFin = fecFin;
+    public void setFecfin(Date fecfin) {
+        this.fecfin = fecfin;
+    }
+
+    public void setFecreg(Date fecreg) {
+        this.fecreg = fecreg;
+    }
+
+    public void setFecact(Date fecact) {
+        this.fecact = fecact;
     }
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public void setFecRegistro(Date fecRegistro) {
-        this.fecRegistro = fecRegistro;
-    }
-
-    public void setFecActualizacion(Date fecActualizacion) {
-        this.fecActualizacion = fecActualizacion;
     }
 
     public void setEstatus(Integer estatus) {
@@ -99,6 +99,7 @@ public class Acceso {
 
     @Override
     public String toString() {
-        return "Acceso{" + "id=" + id + ", fecInicio=" + fecInicio + ", fecFin=" + fecFin + ", descripcion=" + descripcion + ", fecRegistro=" + fecRegistro + ", fecActualizacion=" + fecActualizacion + ", estatus=" + estatus + '}';
+        return "Acceso{" + "id=" + id + ", fecinicio=" + fecinicio + ", fecfin=" + fecfin + ", descripcion=" + descripcion + ", fecreg=" + fecreg + ", fecact=" + fecact + ", estatus=" + estatus + '}';
     }
+
 }

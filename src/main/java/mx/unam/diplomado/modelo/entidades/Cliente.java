@@ -22,9 +22,9 @@ import javax.validation.constraints.NotNull;
 public class Cliente {
 
     private Integer id;
-    private Integer numeroCliente;
-    private Date fecRegistro;
-    private Date fecActualizacion;
+    private Integer numerocliente;
+    private Date fecreg;
+    private Date fecact;
     private Integer estatus;
 
     @Id
@@ -36,19 +36,19 @@ public class Cliente {
 
     @Column(name = "cliente_i_numero")
     @NotNull
-    public Integer getNumeroCliente() {
-        return numeroCliente;
+    public Integer getNumerocliente() {
+        return numerocliente;
     }
 
     @Column(name = "cliente_dt_fecha_registro", columnDefinition = "DATETIME")
     @NotNull
-    public Date getFecRegistro() {
-        return fecRegistro;
+    public Date getFecreg() {
+        return fecreg;
     }
 
     @Column(name = "cliente_dt_fecha_actualizacion", columnDefinition = "DATETIME")
-    public Date getFecActualizacion() {
-        return fecActualizacion;
+    public Date getFecact() {
+        return fecact;
     }
 
     @Column(name = "cliente_si_estatus")
@@ -61,19 +61,24 @@ public class Cliente {
         this.id = id;
     }
 
-    public void setNumeroCliente(Integer numeroCliente) {
-        this.numeroCliente = numeroCliente;
+    public void setNumerocliente(Integer numerocliente) {
+        this.numerocliente = numerocliente;
     }
 
-    public void setFecRegistro(Date fecRegistro) {
-        this.fecRegistro = fecRegistro;
+    public void setFecreg(Date fecreg) {
+        this.fecreg = fecreg;
     }
 
-    public void setFecActualizacion(Date fecActualizacion) {
-        this.fecActualizacion = fecActualizacion;
+    public void setFecact(Date fecact) {
+        this.fecact = fecact;
     }
 
     public void setEstatus(Integer estatus) {
         this.estatus = estatus;
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" + "id=" + id + ", numerocliente=" + numerocliente + ", fecreg=" + fecreg + ", fecact=" + fecact + ", estatus=" + estatus + '}';
     }
 }

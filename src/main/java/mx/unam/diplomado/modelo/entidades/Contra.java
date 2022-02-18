@@ -26,15 +26,15 @@ public class Contra {
 
     private Integer id;
     private Usuario usuario;
-    private String contraCifrado;
-    private Date fecRegistro; // Fecha de registro
-    private Date fecActualizacion; // Fecha de actualizacion
+    private String contra;
+    private Date fecreg; // Fecha de registro
+    private Date fecact; // Fecha de actualizacion
     private Integer estatus; // Estatus del registro en la base
 
-    public Contra(String contraCifrado, Date fecRegistro, Date fecActualizacion, Integer estatus) {
-        this.contraCifrado = contraCifrado;
-        this.fecRegistro = fecRegistro;
-        this.fecActualizacion = fecActualizacion;
+    public Contra(String contra, Date fecreg, Date fecact, Integer estatus) {
+        this.contra = contra;
+        this.fecreg = fecreg;
+        this.fecact = fecact;
         this.estatus = estatus;
     }
 
@@ -55,19 +55,19 @@ public class Contra {
 
     @Column(name = "contra_vc_contra_cifrado", length = 500)
     @NotNull
-    public String getContraCifrado() {
-        return contraCifrado;
+    public String getContra() {
+        return contra;
     }
 
     @Column(name = "contra_dt_fecha_registro", columnDefinition = "DATETIME")
     @NotNull
-    public Date getFecRegistro() {
-        return fecRegistro;
+    public Date getFecreg() {
+        return fecreg;
     }
 
     @Column(name = "contra_dt_fecha_actualizacion", columnDefinition = "DATETIME")
-    public Date getFecActualizacion() {
-        return fecActualizacion;
+    public Date getFecact() {
+        return fecact;
     }
 
     @Column(name = "contra_si_estatus")
@@ -84,16 +84,16 @@ public class Contra {
         this.usuario = usuario;
     }
 
-    public void setContraCifrado(String contraCifrado) {
-        this.contraCifrado = contraCifrado;
+    public void setContra(String contra) {
+        this.contra = contra;
     }
 
-    public void setFecRegistro(Date fecRegistro) {
-        this.fecRegistro = fecRegistro;
+    public void setFecreg(Date fecreg) {
+        this.fecreg = fecreg;
     }
 
-    public void setFecActualizacion(Date fecActualizacion) {
-        this.fecActualizacion = fecActualizacion;
+    public void setFecact(Date fecact) {
+        this.fecact = fecact;
     }
 
     public void setEstatus(Integer estatus) {
@@ -102,8 +102,7 @@ public class Contra {
 
     @Override
     public String toString() {
-        return "Contra [id=" + id + ", contraCifrado=" + contraCifrado + ", fecRegistro=" + fecRegistro
-                + ", fecActualizacion=" + fecActualizacion + ", estatus=" + estatus + "]";
+        return "Contra{" + "id=" + id + ", usuario=" + usuario + ", contra=" + contra + ", fecreg=" + fecreg + ", fecact=" + fecact + ", estatus=" + estatus + '}';
     }
 
 }

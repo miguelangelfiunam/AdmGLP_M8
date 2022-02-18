@@ -24,8 +24,8 @@ public class Direccion {
     private Integer id;
     private String nombre;
     private String referencias;
-    private Date fecRegistro;
-    private Date fecActualizacion;
+    private Date fecreg;
+    private Date fecact;
     private Integer estatus;
 
     @Id
@@ -49,13 +49,13 @@ public class Direccion {
 
     @Column(name = "direccion_dt_fecha_registro", columnDefinition = "DATETIME")
     @NotNull
-    public Date getFecRegistro() {
-        return fecRegistro;
+    public Date getFecreg() {
+        return fecreg;
     }
 
     @Column(name = "direccion_dt_fecha_actualizacion", columnDefinition = "DATETIME")
-    public Date getFecActualizacion() {
-        return fecActualizacion;
+    public Date getFecact() {
+        return fecact;
     }
 
     @Column(name = "direccion_si_estatus")
@@ -72,16 +72,16 @@ public class Direccion {
         this.nombre = nombre;
     }
 
+    public void setFecreg(Date fecreg) {
+        this.fecreg = fecreg;
+    }
+
+    public void setFecact(Date fecact) {
+        this.fecact = fecact;
+    }
+
     public void setReferencias(String referencias) {
         this.referencias = referencias;
-    }
-
-    public void setFecRegistro(Date fecRegistro) {
-        this.fecRegistro = fecRegistro;
-    }
-
-    public void setFecActualizacion(Date fecActualizacion) {
-        this.fecActualizacion = fecActualizacion;
     }
 
     public void setEstatus(Integer estatus) {
@@ -90,6 +90,7 @@ public class Direccion {
 
     @Override
     public String toString() {
-        return "Direccion{" + "id=" + id + ", nombre=" + nombre + ", referencias=" + referencias + ", fecRegistro=" + fecRegistro + ", fecActualizacion=" + fecActualizacion + ", estatus=" + estatus + '}';
+        return "Direccion{" + "id=" + id + ", nombre=" + nombre + ", referencias=" + referencias + ", fecreg=" + fecreg + ", fecact=" + fecact + ", estatus=" + estatus + '}';
     }
+
 }

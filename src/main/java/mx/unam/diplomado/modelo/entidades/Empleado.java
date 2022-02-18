@@ -22,11 +22,11 @@ import javax.validation.constraints.NotNull;
 public class Empleado {
 
     private Integer id;
-    private Integer numTrab;
-    private String numSS;
+    private Integer numtrab;
+    private String numss;
     private String rfc;
-    private Date fecRegistro;
-    private Date fecActualizacion;
+    private Date fecreg;
+    private Date fecact;
     private Integer estatus;
 
     @Id
@@ -38,14 +38,14 @@ public class Empleado {
 
     @Column(name = "empleado_i_num_trab", unique = true)
     @NotNull
-    public Integer getNumTrab() {
-        return numTrab;
+    public Integer getNumtrab() {
+        return numtrab;
     }
 
     @Column(name = "empleado_i_numero_ss", length = 15, unique = true)
     @NotNull
-    public String getNumSS() {
-        return numSS;
+    public String getNumss() {
+        return numss;
     }
 
     @Column(name = "empleado_c_rfc_trab", length = 13, unique = true)
@@ -56,13 +56,13 @@ public class Empleado {
 
     @Column(name = "empleado_dt_fecha_registro", columnDefinition = "DATETIME")
     @NotNull
-    public Date getFecRegistro() {
-        return fecRegistro;
+    public Date getFecreg() {
+        return fecreg;
     }
 
     @Column(name = "empleado_dt_fecha_actualizacion", columnDefinition = "DATETIME")
-    public Date getFecActualizacion() {
-        return fecActualizacion;
+    public Date getFecact() {
+        return fecact;
     }
 
     @Column(name = "empleado_si_estatus")
@@ -75,24 +75,24 @@ public class Empleado {
         this.id = id;
     }
 
-    public void setNumTrab(Integer numTrab) {
-        this.numTrab = numTrab;
+    public void setNumtrab(Integer numtrab) {
+        this.numtrab = numtrab;
     }
 
-    public void setNumSS(String numSS) {
-        this.numSS = numSS;
+    public void setNumss(String numss) {
+        this.numss = numss;
+    }
+
+    public void setFecreg(Date fecreg) {
+        this.fecreg = fecreg;
+    }
+
+    public void setFecact(Date fecact) {
+        this.fecact = fecact;
     }
 
     public void setRfc(String rfc) {
         this.rfc = rfc;
-    }
-
-    public void setFecRegistro(Date fecRegistro) {
-        this.fecRegistro = fecRegistro;
-    }
-
-    public void setFecActualizacion(Date fecActualizacion) {
-        this.fecActualizacion = fecActualizacion;
     }
 
     public void setEstatus(Integer estatus) {
@@ -101,6 +101,6 @@ public class Empleado {
 
     @Override
     public String toString() {
-        return "Empleado{" + "id=" + id + ", numTrab=" + numTrab + ", numSS=" + numSS + ", rfc=" + rfc + ", fecRegistro=" + fecRegistro + ", fecActualizacion=" + fecActualizacion + ", estatus=" + estatus + '}';
+        return "Empleado{" + "id=" + id + ", numtrab=" + numtrab + ", numss=" + numss + ", rfc=" + rfc + ", fecreg=" + fecreg + ", fecact=" + fecact + ", estatus=" + estatus + '}';
     }
 }

@@ -14,7 +14,7 @@ import org.springframework.format.annotation.DateTimeFormat;
  */
 public class UsuarioForm {
 
-    private Integer idUsuario; // Identificador de usuario
+    private Integer idusuario; // Identificador de usuario
 
     @Size(min = 5, max = 50)
     private String apodo; // Seudonimo del usuario en la aplicacion
@@ -43,7 +43,7 @@ public class UsuarioForm {
 
     @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date fechaNacimiento; // Fecha de nacimiento
+    private Date fnac; // Fecha de nacimiento
 
     @NotNull
     @Size(max = 10)
@@ -53,16 +53,16 @@ public class UsuarioForm {
     private String telefono2; // Segundo telefono de contacto
     
     @NotNull
-    private Integer idRol;
+    private Integer idrol;
     
     private String contra;
 
-    public Integer getIdUsuario() {
-        return idUsuario;
+    public Integer getIdusuario() {
+        return idusuario;
     }
 
-    public void setIdUsuario(Integer idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setIdusuario(Integer idusuario) {
+        this.idusuario = idusuario;
     }
 
     public String getApodo() {
@@ -117,24 +117,16 @@ public class UsuarioForm {
         return edad;
     }
 
-    public Integer getIdRol() {
-        return idRol;
-    }
-
-    public String getContra() {
-        return contra;
-    }
-
     public void setEdad(Integer edad) {
         this.edad = edad;
     }
 
-    public Date getFechaNacimiento() {
-        return fechaNacimiento;
+    public Date getFnac() {
+        return fnac;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+    public void setFnac(Date fnac) {
+        this.fnac = fnac;
     }
 
     public String getTelefono1() {
@@ -153,8 +145,16 @@ public class UsuarioForm {
         this.telefono2 = telefono2;
     }
 
-    public void setIdRol(Integer idRol) {
-        this.idRol = idRol;
+    public Integer getIdrol() {
+        return idrol;
+    }
+
+    public void setIdrol(Integer idrol) {
+        this.idrol = idrol;
+    }
+
+    public String getContra() {
+        return contra;
     }
 
     public void setContra(String contra) {
@@ -163,6 +163,7 @@ public class UsuarioForm {
 
     @Override
     public String toString() {
-        return "UsuarioForm{" + "idUsuario=" + idUsuario + ", apodo=" + apodo + ", correo1=" + correo1 + ", correo2=" + correo2 + ", nombre=" + nombre + ", apellido1=" + apellido1 + ", apellido2=" + apellido2 + ", edad=" + edad + ", fechaNacimiento=" + fechaNacimiento + ", telefono1=" + telefono1 + ", telefono2=" + telefono2 + '}';
+        return "UsuarioForm{" + "idusuario=" + idusuario + ", apodo=" + apodo + ", correo1=" + correo1 + ", correo2=" + correo2 + ", nombre=" + nombre + ", apellido1=" + apellido1 + ", apellido2=" + apellido2 + ", edad=" + edad + ", fnac=" + fnac + ", telefono1=" + telefono1 + ", telefono2=" + telefono2 + ", idrol=" + idrol + ", contra=" + contra + '}';
     }
+
 }

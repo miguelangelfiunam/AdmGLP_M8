@@ -31,17 +31,17 @@ import org.hibernate.annotations.FetchMode;
  */
 @Entity
 @Table(name = "t_usuario")
-@NamedQueries(
-        {
-            @NamedQuery(name = "contactosPorEstatus", query = "SELECT u FROM Usuario u WHERE u.estatus = :idEstatus")
-            ,
-		@NamedQuery(name = "contactosPorRol", query = "SELECT u FROM Usuario u "
-                    + "JOIN u.usuariosRoles ur "
-                    + "JOIN ur.rol r ON r.idRol = :idRol")
-        })
+//@NamedQueries(
+//        {
+//            @NamedQuery(name = "contactosPorEstatus", query = "SELECT u FROM Usuario u WHERE u.estatus = :idEstatus")
+//            ,
+//		@NamedQuery(name = "contactosPorRol", query = "SELECT u FROM Usuario u "
+//                    + "JOIN u.usuariosRoles ur "
+//                    + "JOIN ur.rol r ON r.idRol = :idRol")
+//        })
 public class Usuario {
 
-    private Integer idUsuario; // Identificador de usuario
+    private Integer idusuario; // Identificador de usuario
     private Contra contra;
     private String apodo; // Seudonimo del usuario en la aplicacion
     private String correo1; // Correo electronico
@@ -50,19 +50,19 @@ public class Usuario {
     private String apellido1; // Primer apellido 100
     private String apellido2; // Segundo apellido 100
     private Integer edad;// Edad de la persona
-    private Date fechaNacimiento; // Fecha de nacimiento
+    private Date fnac; // Fecha de nacimiento
     private String telefono1; // Telefono del usuario
     private String telefono2; // Segundo telefono de contacto
-    private Date fecRegistro; // Fecha de Inicio de acceso a la aplicacion
-    private Date fecActualizacion; // Fecha de fin de acceso a la aplicacion
+    private Date fecreg; // Fecha de Inicio de acceso a la aplicacion
+    private Date fecact; // Fecha de fin de acceso a la aplicacion
     private Integer estatus; // Estado del usuario
-    private Set<UsuarioRol> usuariosRoles;
+    private Set<Usuario_rol> usuariosroles;
 
     @Id
     @Column(name = "id_usuario")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer getIdUsuario() {
-        return idUsuario;
+    public Integer getIdusuario() {
+        return idusuario;
     }
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -114,8 +114,8 @@ public class Usuario {
 
     @Column(name = "usuario_d_fec_nacimiento", columnDefinition = "DATE")
     @NotNull
-    public Date getFechaNacimiento() {
-        return fechaNacimiento;
+    public Date getFnac() {
+        return fnac;
     }
 
     @Column(name = "usuario_vc_telefono1", length = 10)
@@ -131,13 +131,13 @@ public class Usuario {
 
     @Column(name = "usuario_dt_fecha_registro", columnDefinition = "DATETIME")
     @NotNull
-    public Date getFecRegistro() {
-        return fecRegistro;
+    public Date getFecreg() {
+        return fecreg;
     }
 
     @Column(name = "usuario_dt_fecha_actualizacion", columnDefinition = "DATETIME")
-    public Date getFecActualizacion() {
-        return fecActualizacion;
+    public Date getFecact() {
+        return fecact;
     }
 
     @Column(name = "usuario_si_estatus")
@@ -148,12 +148,12 @@ public class Usuario {
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @Fetch(FetchMode.JOIN)
-    public Set<UsuarioRol> getUsuariosRoles() {
-        return usuariosRoles;
+    public Set<Usuario_rol> getUsuariosroles() {
+        return usuariosroles;
     }
 
-    public void setIdUsuario(Integer idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setIdusuario(Integer idusuario) {
+        this.idusuario = idusuario;
     }
 
     public void setApodo(String apodo) {
@@ -184,8 +184,8 @@ public class Usuario {
         this.edad = edad;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+    public void setFnac(Date fnac) {
+        this.fnac = fnac;
     }
 
     public void setTelefono1(String telefono1) {
@@ -196,20 +196,20 @@ public class Usuario {
         this.telefono2 = telefono2;
     }
 
-    public void setFecRegistro(Date fecRegistro) {
-        this.fecRegistro = fecRegistro;
+    public void setFecreg(Date fecreg) {
+        this.fecreg = fecreg;
     }
 
-    public void setFecActualizacion(Date fecActualizacion) {
-        this.fecActualizacion = fecActualizacion;
+    public void setFecact(Date fecact) {
+        this.fecact = fecact;
     }
 
     public void setEstatus(Integer estatus) {
         this.estatus = estatus;
     }
 
-    public void setUsuariosRoles(Set<UsuarioRol> usuariosRoles) {
-        this.usuariosRoles = usuariosRoles;
+    public void setUsuariosroles(Set<Usuario_rol> usuariosroles) {
+        this.usuariosroles = usuariosroles;
     }
 
     public void setContra(Contra contra) {
@@ -218,11 +218,7 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario [idUsuario=" + idUsuario + ", apodo=" + apodo + ", correo1=" + correo1 + ", correo2=" + correo2
-                + ", nombre=" + nombre + ", apellido1=" + apellido1 + ", apellido2=" + apellido2 + ", edad=" + edad
-                + ", fechaNacimiento=" + fechaNacimiento + ", telefono1=" + telefono1 + ", telefono2=" + telefono2
-                + ", fecRegistro=" + fecRegistro + ", fecActualizacion=" + fecActualizacion + ", estatus=" + estatus
-                + ", usuariosRoles=" + usuariosRoles + "]";
+        return "Usuario{" + "idusuario=" + idusuario + ", contra=" + contra + ", apodo=" + apodo + ", correo1=" + correo1 + ", correo2=" + correo2 + ", nombre=" + nombre + ", apellido1=" + apellido1 + ", apellido2=" + apellido2 + ", edad=" + edad + ", fnac=" + fnac + ", telefono1=" + telefono1 + ", telefono2=" + telefono2 + ", fecreg=" + fecreg + ", fecact=" + fecact + ", estatus=" + estatus + ", usuariosroles=" + usuariosroles + '}';
     }
 
 }

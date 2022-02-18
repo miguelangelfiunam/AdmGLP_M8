@@ -20,6 +20,10 @@
                        onclick="window.location.href = '/admglp'; return false;"
                        class="btn btn-primary" />
                 <input type="button"
+                       th:attr="value=#{label.titulo.usuarios}"
+                       onclick="window.location.href = '/admglp/usuarios/getAll'; return false;"
+                       class="btn btn-primary" />
+                <input type="button"
                        th:attr="value=#{label.agregar}"
                        onclick="window.location.href = 'usuarioForm'; return false;"
                        class="btn btn-primary" /> <br /> <br />
@@ -35,8 +39,8 @@
                                 <select th:name="estatusSelect" class="form-control" id="selectEstatus">
                                     <option value="">--SELECT--</option>
                                     <option th:each="estatus: ${#servletContext.getAttribute('estatusUsuarios')}"
-                                            th:value="${estatus.numeroEstatus}"
-                                            th:text="${estatus.nombreEstatus}" />
+                                            th:value="${estatus.numeroestatus}"
+                                            th:text="${estatus.nombreestatus}" />
                                 </select>
                             </div>
 
@@ -64,11 +68,11 @@
                                 <td th:text="${usuario.apellido1}" />
                                 <td th:text="${usuario.edad}" />
                                 <td>
-                                    <a th:href="@{/usuarios/actualizar/{usuarioId}(usuarioId=${usuario.idUsuario})}" class="btn btn-primary" role="button">
+                                    <a th:href="@{/usuarios/actualizar/{usuarioId}(usuarioId=${usuario.idusuario})}" class="btn btn-primary" role="button">
                                         <span th:text="#{label.editar}"></span>
                                     </a>
                                     &nbsp; 
-                                    <a th:href="@{/usuarios/eliminar(usuarioId=${usuario.idUsuario})}"
+                                    <a th:href="@{/usuarios/eliminar(usuarioId=${usuario.idusuario})}"
                                        class="btn btn-danger" role="button"
                                        th:onclick="'javascript:return eliminarUsuario(\'' + #{label.usuario.eliminar.pregunta} + '\');'">
                                         <span th:text="#{label.eliminar}"></span>

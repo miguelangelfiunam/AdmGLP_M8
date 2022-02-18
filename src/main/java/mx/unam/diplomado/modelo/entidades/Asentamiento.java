@@ -28,11 +28,11 @@ public class Asentamiento {
 
     private Integer id;
     private String clave;
-    private String codigoPostal;
+    private String codigopostal;
     private String tipo;
     private String nombre;
-    private Date fecRegistro;
-    private Date fecActualizacion;
+    private Date fecreg;
+    private Date fecact;
     private Integer estatus;
 
     @Id
@@ -50,8 +50,8 @@ public class Asentamiento {
 
     @Column(name = "asenta_c_codigo_postal", length = 5)
     @NotNull
-    public String getCodigoPostal() {
-        return codigoPostal;
+    public String getCodigopostal() {
+        return codigopostal;
     }
 
     @Column(name = "asenta_vc_tipo", length = 70)
@@ -68,13 +68,13 @@ public class Asentamiento {
 
     @Column(name = "acceso_dt_fecha_registro", columnDefinition = "DATETIME")
     @NotNull
-    public Date getFecRegistro() {
-        return fecRegistro;
+    public Date getFecreg() {
+        return fecreg;
     }
 
     @Column(name = "acceso_dt_fecha_actualizacion", columnDefinition = "DATETIME")
-    public Date getFecActualizacion() {
-        return fecActualizacion;
+    public Date getFecact() {
+        return fecact;
     }
 
     @Column(name = "acceso_si_estatus")
@@ -91,8 +91,8 @@ public class Asentamiento {
         this.clave = clave;
     }
 
-    public void setCodigoPostal(String codigoPostal) {
-        this.codigoPostal = codigoPostal;
+    public void setCodigopostal(String codigopostal) {
+        this.codigopostal = codigopostal;
     }
 
     public void setTipo(String tipo) {
@@ -103,12 +103,12 @@ public class Asentamiento {
         this.nombre = nombre;
     }
 
-    public void setFecRegistro(Date fecRegistro) {
-        this.fecRegistro = fecRegistro;
+    public void setFecreg(Date fecreg) {
+        this.fecreg = fecreg;
     }
 
-    public void setFecActualizacion(Date fecActualizacion) {
-        this.fecActualizacion = fecActualizacion;
+    public void setFecact(Date fecact) {
+        this.fecact = fecact;
     }
 
     public void setEstatus(Integer estatus) {
@@ -117,6 +117,6 @@ public class Asentamiento {
 
     @Override
     public String toString() {
-        return "Asentamiento{" + "id=" + id + ", clave=" + clave + ", codigoPostal=" + codigoPostal + ", tipo=" + tipo + ", nombre=" + nombre + ", fecRegistro=" + fecRegistro + ", fecActualizacion=" + fecActualizacion + ", estatus=" + estatus + '}';
+        return "Asentamiento{" + "id=" + id + ", clave=" + clave + ", codigopostal=" + codigopostal + ", tipo=" + tipo + ", nombre=" + nombre + ", fecreg=" + fecreg + ", fecact=" + fecact + ", estatus=" + estatus + '}';
     }
 }

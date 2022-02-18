@@ -23,18 +23,18 @@ import com.sun.istack.NotNull;
 @Table(name = "c_rol")
 public class Rol {
 
-    private Integer idRol; // Identificador del rol
+    private Integer idrol; // Identificador del rol
     private String nombre; // Nombre del rol
     private String tipo; // Tipo del rol
-    private Date fecRegistro; // Fecha de registro
-    private Date fecActualizacion; // Fecha de actualizacion
+    private Date fecreg; // Fecha de registro
+    private Date fecact; // Fecha de actualizacion
     private Integer estatus; // Estatus del registro en la base
 
     @Id
     @Column(name = "id_rol")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer getIdRol() {
-        return idRol;
+    public Integer getIdrol() {
+        return idrol;
     }
 
     @Column(name = "rol_vc_nombre", length = 50)
@@ -50,13 +50,13 @@ public class Rol {
     }
 
     @Column(name = "rol_dt_fecha_registro", columnDefinition = "DATETIME", nullable = false)
-    public Date getFecRegistro() {
-        return fecRegistro;
+    public Date getFecreg() {
+        return fecreg;
     }
 
     @Column(name = "rol_dt_fecha_actualizacion", columnDefinition = "DATETIME", nullable = true)
-    public Date getFecActualizacion() {
-        return fecActualizacion;
+    public Date getFecact() {
+        return fecact;
     }
 
     @Column(name = "rol_si_estatus")
@@ -65,8 +65,8 @@ public class Rol {
         return estatus;
     }
 
-    public void setIdRol(Integer idRol) {
-        this.idRol = idRol;
+    public void setIdrol(Integer idrol) {
+        this.idrol = idrol;
     }
 
     public void setNombre(String nombre) {
@@ -77,12 +77,12 @@ public class Rol {
         this.tipo = tipo;
     }
 
-    public void setFecRegistro(Date fecRegistro) {
-        this.fecRegistro = fecRegistro;
+    public void setFecreg(Date fecreg) {
+        this.fecreg = fecreg;
     }
 
-    public void setFecActualizacion(Date fecActualizacion) {
-        this.fecActualizacion = fecActualizacion;
+    public void setFecact(Date fecact) {
+        this.fecact = fecact;
     }
 
     public void setEstatus(Integer estatus) {
@@ -91,7 +91,6 @@ public class Rol {
 
     @Override
     public String toString() {
-        return "Rol [idRol=" + idRol + ", nombre=" + nombre + ", tipo=" + tipo + ", fecRegistro=" + fecRegistro
-                + ", fecActualizacion=" + fecActualizacion + ", estatus=" + estatus + "]";
+        return "Rol{" + "idrol=" + idrol + ", nombre=" + nombre + ", tipo=" + tipo + ", fecreg=" + fecreg + ", fecact=" + fecact + ", estatus=" + estatus + '}';
     }
 }
