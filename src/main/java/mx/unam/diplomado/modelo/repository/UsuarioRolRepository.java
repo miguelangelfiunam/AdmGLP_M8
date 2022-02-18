@@ -11,5 +11,6 @@ public interface UsuarioRolRepository extends JpaRepository<Usuario_rol, Integer
 
     List<Usuario_rol> findByEstatus(Integer estatus);
     
-    boolean existsByUsuarioIdusuarioAndRolIdrol(Integer idUsuario, Integer idRol);
+    List<Usuario_rol> findByUsuarioIdusuario(Integer idusuario);
+    
 }

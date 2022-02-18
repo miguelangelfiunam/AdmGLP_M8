@@ -41,8 +41,8 @@ public class UsuarioRolServiceImpl implements UsuarioRolService {
     }
 
     @Override
-    public boolean existeRelacionUsuarioRol(Integer idusuario, Integer idrol) {
-        return usuarioRolRepository.existsByUsuarioIdusuarioAndRolIdrol(idusuario, idrol);
+    public List<Usuario_rol> getUsuariosRolesIdusuarioIdrol(Integer idusuario, Integer idrol) {
+        return usuarioRolRepository.findByUsuarioIdusuario(idusuario);
     }
 
 }

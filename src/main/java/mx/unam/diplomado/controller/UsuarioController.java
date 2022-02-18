@@ -81,9 +81,11 @@ public class UsuarioController {
         } else {
             System.out.println("OBJECT FORM==" + usuarioForm);
             Usuario usuario = null;
-            if (usuarioForm.getIdusuario()!= null) {
+            Set<Usuario_rol> usuariosRolesAnteriores = null;
+            if (usuarioForm.getIdusuario() != null) {
                 usuario = usuarioService.getUsuario(usuarioForm.getIdusuario());
                 usuario.setFecact(new Date());
+                usuariosRolesAnteriores = usuario.getUsuariosroles();
             } else {
                 usuario = new Usuario();
                 usuario.setFecreg(new Date());
@@ -115,11 +117,20 @@ public class UsuarioController {
             usuarioRol.setFecreg(new Date());
             usuarioRol.setEstatus(10);
             usuariosRoles.add(usuarioRol);
-            usuario.setUsuariosroles(usuariosRoles);
-            if (!usuarioRolService.existeRelacionUsuarioRol(usuario.getIdusuario(), rol.getIdrol())) {
+            boolean inserta = true;
+            if (usuariosRolesAnteriores != null && !usuariosRolesAnteriores.isEmpty()) {
+                for (Iterator<Usuario_rol> it = usuariosRolesAnteriores.iterator(); it.hasNext();) {
+                    Usuario_rol usuarioRolAnterior = it.next();
+                    if (usuarioRolAnterior.getRol().getIdrol() == rol.getIdrol()) {
+                        inserta = false;
+                        break;
+                    }
+                }
+            }
+            if (inserta) {
+                usuario.setUsuariosroles(usuariosRoles);
                 usuarioService.guardaUsuario(usuario);
             }
-
             vista.addObject("usuarios", usuarioService.getUsuarios());
             vista.setViewName("usuarios");
         }

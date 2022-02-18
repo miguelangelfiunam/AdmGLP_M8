@@ -22,5 +22,5 @@ public interface UsuarioRolService {
 
     void eliminaUsuarioRol(Integer id);
     
-    boolean existeRelacionUsuarioRol(Integer idUsuario, Integer idRol);
+    List<Usuario_rol> getUsuariosRolesIdusuarioIdrol(Integer idUsuario, Integer idRol);
 }
