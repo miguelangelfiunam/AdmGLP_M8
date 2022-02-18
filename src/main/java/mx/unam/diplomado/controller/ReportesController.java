@@ -20,7 +20,8 @@ public class ReportesController {
 
     @ModelAttribute("usuarioList")
     public List<Usuario> getProductosList() {
-        return usuarioService.getUsuarios();
+        List<Usuario> usuarios = usuarioService.getUsuarios();
+        return usuarios;
     }
 
     @RequestMapping("/pdf")

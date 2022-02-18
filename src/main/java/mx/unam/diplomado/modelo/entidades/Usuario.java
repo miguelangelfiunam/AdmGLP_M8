@@ -11,8 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -65,8 +64,11 @@ public class Usuario {
         return idusuario;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_contra", referencedColumnName = "id_contra")
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "id_contra", referencedColumnName = "id_contra")
+    @ManyToOne(targetEntity = Contra.class, optional = false, fetch = FetchType.LAZY) //indica el tipo de clase
+    @JoinColumn(name = "id_contra", nullable = false)//indicar la columna de la relacion de B
+    @Fetch(FetchMode.JOIN)
     public Contra getContra() {
         return contra;
     }
@@ -218,7 +220,7 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario{" + "idusuario=" + idusuario + ", contra=" + contra + ", apodo=" + apodo + ", correo1=" + correo1 + ", correo2=" + correo2 + ", nombre=" + nombre + ", apellido1=" + apellido1 + ", apellido2=" + apellido2 + ", edad=" + edad + ", fnac=" + fnac + ", telefono1=" + telefono1 + ", telefono2=" + telefono2 + ", fecreg=" + fecreg + ", fecact=" + fecact + ", estatus=" + estatus + ", usuariosroles=" + usuariosroles + '}';
+        return "Usuario{" + "idusuario=" + idusuario + ", contra=" + contra + ", apodo=" + apodo + ", correo1=" + correo1 + ", correo2=" + correo2 + ", nombre=" + nombre + ", apellido1=" + apellido1 + ", apellido2=" + apellido2 + ", edad=" + edad + ", fnac=" + fnac + ", telefono1=" + telefono1 + ", telefono2=" + telefono2 + ", fecreg=" + fecreg + ", fecact=" + fecact + ", estatus=" + estatus + '}';
     }
 
 }

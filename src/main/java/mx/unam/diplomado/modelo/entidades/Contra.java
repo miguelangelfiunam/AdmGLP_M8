@@ -25,7 +25,6 @@ import com.sun.istack.NotNull;
 public class Contra {
 
     private Integer id;
-    private Usuario usuario;
     private String contra;
     private Date fecreg; // Fecha de registro
     private Date fecact; // Fecha de actualizacion
@@ -46,11 +45,6 @@ public class Contra {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
         return id;
-    }
-
-    @OneToOne(mappedBy = "contra")
-    public Usuario getUsuario() {
-        return usuario;
     }
 
     @Column(name = "contra_vc_contra_cifrado", length = 500)
@@ -80,10 +74,6 @@ public class Contra {
         this.id = id;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
     public void setContra(String contra) {
         this.contra = contra;
     }
@@ -102,7 +92,7 @@ public class Contra {
 
     @Override
     public String toString() {
-        return "Contra{" + "id=" + id + ", usuario=" + usuario + ", contra=" + contra + ", fecreg=" + fecreg + ", fecact=" + fecact + ", estatus=" + estatus + '}';
+        return "Contra{" + "id=" + id + ", contra=" + contra + ", fecreg=" + fecreg + ", fecact=" + fecact + ", estatus=" + estatus + '}';
     }
 
 }

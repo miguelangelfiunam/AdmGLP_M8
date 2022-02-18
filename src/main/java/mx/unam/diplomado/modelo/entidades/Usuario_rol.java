@@ -1,5 +1,6 @@
 package mx.unam.diplomado.modelo.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -56,7 +57,8 @@ public class Usuario_rol {
     public Rol getRol() {
         return rol;
     }
-
+    
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_usuario")
     public Usuario getUsuario() {
